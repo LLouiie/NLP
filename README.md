@@ -1,7 +1,7 @@
 # NLP Project 
 
 ## Whats' in BestModel/
-`BestModel/` contains the training/inference script used for prediction.
+`BestModel/` contains the training/inference script and the saved checkpoint used for prediction.
 
 **Script**
 - `BestModel/reconstruct_and_roberta_baseline.py`  
@@ -9,23 +9,31 @@
   Supports training (SimpleTransformers) and predict-only inference (Transformers).
 
 **Saved model checkpoint**
-- The RoBERTa checkpoint used for inference is passed via `--best-model-dir`.
+- `BestModel/best_model/` includes the RoBERTa weights and tokenizer artifacts:
+  - `model.safetensors`: model weights
+  - `config.json`: model architecture/config
+  - `tokenizer.json`, `vocab.json`, `merges.txt`, `special_tokens_map.json`, `tokenizer_config.json`: tokenizer files
+  - `training_args.bin`, `optimizer.pt`, `scheduler.pt`: training state (kept for reference)
+  - `model_args.json`: training/inference arguments snapshot
+  - `eval_results.txt`: evaluation results saved during training
+
+## Predicted_output (dev.txt and test.txt)
+- `Predicted_output/dev.txt`: model predictions for dev IDs (one label per line).
+- `Predicted_output/test.txt`: model predictions for task4 test (one label per line).
+
 
 ## How to run 
  Generate dev/test predictions:
 
 ```bash
 python BestModel/reconstruct_and_roberta_baseline.py \
-  --data-dir /rds/general/user/jy625/home/NLP_MODEL \
   --predict-only \
   --best-model-dir /path/to/best_model \
   --dev-out Predicted_output/dev.txt \
   --test-out Predicted_output/test.txt
 ```
 
-## Predicted_output (dev.txt and test.txt)
-- `Predicted_output/dev.txt`: model predictions for dev IDs (one label per line).
-- `Predicted_output/test.txt`: model predictions for task4 test (one label per line).
+
 
 ## Other files
 - `dontpatronizeme_pcl.tsv`: original training data for task1.
