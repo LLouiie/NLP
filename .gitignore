@@ -14,7 +14,4 @@ ENV/
 cache_dir/
 outputs/
 runs/
-BestModel/best_model/
-*.safetensors
-*.pt
-*.bin
+BestModel/best_model/optimizer.pt
