@@ -13,13 +13,17 @@
   - `model.safetensors`: model weights
   - `config.json`: model architecture/config
   - `tokenizer.json`, `vocab.json`, `merges.txt`, `special_tokens_map.json`, `tokenizer_config.json`: tokenizer files
-  - `training_args.bin`, `optimizer.pt`, `scheduler.pt`: training state (kept for reference)
+  - `training_args.bin`, `scheduler.pt`: training state (kept for reference)
   - `model_args.json`: training/inference arguments snapshot
   - `eval_results.txt`: evaluation results saved during training
 
 ## Predicted_output (dev.txt and test.txt)
 - `Predicted_output/dev.txt`: model predictions for dev IDs (one label per line).
 - `Predicted_output/test.txt`: model predictions for task4 test (one label per line).
+
+## External files
+- `optimizer.pt` is stored externally due to GitHub size limits:
+  https://drive.google.com/drive/folders/1SzOSBEF-hqNkxnE_gijww5lTcoCIdcNf?usp=sharing
 
 
 ## How to run 
@@ -44,5 +48,5 @@ python BestModel/reconstruct_and_roberta_baseline.py \
 
 
 ## Runtime environment
-- Python: 3.10+ (conda env name: `nlp`)
+- Python: 3.10+ 
 - Key packages: torch, transformers, simpletransformers, pandas, scikit-learn
